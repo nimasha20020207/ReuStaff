@@ -1,0 +1,141 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Corrected CSS path with context -->
+    <link rel="stylesheet" type="text/css" href="css/home.css">
+    
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <style>
+        /* Inline styling as you have it */
+        .username-link {
+            color: #0d0d0e;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 50px;
+            font-size: 30px;
+        }
+
+        .username-link1 {
+            color: #0d0d0e;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 30px;
+        }
+
+        .username-link:hover, .username-link1:hover {
+            color: rgb(14, 85, 85);
+            text-decoration: none;
+        }
+
+        /* Announcement Section */
+        .announcement-section {
+            background: radial-gradient(circle at top left, #91ddd2, #bec4c5);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .table th {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .table tbody th {
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+<%
+    String username = (String) session.getAttribute("username");
+    if (username == null) {
+        response.sendRedirect("index.jsp");
+    }
+%>
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <!-- Corrected image path with context -->
+            <div class="col-md-6">
+                <img src="image/logo1.jpg" alt="Reuban College Logo" class="img-fluid" style="width: 70%; height: 30%;">
+            </div>
+            <div class="col-md-6 text-end">
+                <div class="d-flex align-items-center justify-content-end">
+                    <a href="/profile" class="username-link">${username}</a> 
+                    <a href="" class="username-link1">
+                        <i class="bi bi-person-circle" style="font-size: 50px; margin-right: 10px;"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="d-flex justify-content-end align-items-center" style="background-color: #839492; color: #fff; padding: 10px;">
+        <nav>
+            <ul class="nav">
+                <!-- Updated navigation links with context paths -->
+                <li class="nav-item">
+                    <a class="btn custom-btn me-4" href="adminHome.jsp">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn custom-btn me-4" href="manageu.jsp">Manage Users</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="btn custom-btn me-4" href="">Make An Announcement</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn custom-btn me-4" href="">Check Attendance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn custom-btn me-4" href="">Communication</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="btn custom-btn me-4" href="logout">Log out</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Announcement Section -->
+    <div class="container mt-4 announcement-section">
+        <h2>Announcements</h2>
+        <hr size="6" class="mt-6">
+        <div class="announcement-box p-4 bg-light rounded">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Important Notice</th>
+                        <td>All students are requested to attend the orientation session on Monday at 10 AM in the main hall.</td>
+                    </tr>
+                    <tr>
+                        <th>Important Notice</th>
+                        <td>All students are requested to attend the orientation session on Monday at 10 AM in the main hall.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Reuban College G10. <br>All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>

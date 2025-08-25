@@ -1,0 +1,129 @@
+title {
+    display: flex;
+    margin: 60px 0 30px 150px;
+    text-align: center;
+}
+
+ .title .text {
+    font-size: 45px;
+    font-weight: 500;
+    color: #002960;
+    margin-left: 25%;
+    text-align: center;
+}
+hr.mt-6{
+    color: #d60303;
+    
+}
+
+footer {
+    background-color: #333; /* Dark background color */
+    color: white; /* White text */
+    text-align: center; /* Center the text */
+    padding: 20px 0; /* Add some padding */
+    position: relative;
+    bottom: 0;
+    width: 100%; /* Make it span across the entire width */
+}
+
+/* Optional: To fix the footer at the bottom if the content is short */
+html, body {
+    height: 100%; /* Set full height for the page */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto; /* Push the footer to the bottom */
+}
+.custom-btn {
+    background-color: #839492!important; /* Change to your desired color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+}
+.custom-btn:hover{
+    background-color: #ddee419c !important;
+}
+
+
+/* Parent container for all the content boxes */
+.content-container {
+    display: flex; /* Aligns the flexboxes in a row */
+    justify-content: space-between; /* Evenly distributes space between items */
+    flex-wrap: wrap; /* Allows items to wrap to the next line if the screen is too small */
+    padding: 20px;
+}
+
+/* Each individual content box */
+.content {
+    width: 200px; /* Adjust the width of each flexbox */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Adds space between rows if they wrap */
+}
+
+.support {
+    text-align: center;
+    background-color: mediumslateblue;
+    padding: 20px 20px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: 0.5s ease;
+}
+
+.support:hover {
+    background-color: midnightblue;
+}
+
+.support i {
+    font-size: 48px;
+    color: rgb(10, 17, 78);
+}
+.support i:hover {
+    color:aliceblue
+}
+
+.support h2 {
+    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.support h2:hover{
+    color:aliceblue
+}
+
+.support p {
+    font-size: 16px;
+    color: black;
+    line-height: 1.4;
+}
+.support p:hover {
+    color:aliceblue
+}
+/* Wrapper for the icon and search bar */
+.icon-search {
+    display: flex;
+    align-items: center; /* Align icon and search bar vertically */
+}
+
+/* Style for the search bar */
+.search-bar {
+    margin-left: 10px; /* Add space between the icon and the search bar */
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+/* Container to align the icon and button */
+.icon-button-container {
+    display: flex; /* Aligns the icon and button in a row */
+    align-items: center; /* Vertically center the icon and button */
+}
+
+/* Style for the button */

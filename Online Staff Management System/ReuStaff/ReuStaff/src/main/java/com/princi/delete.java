@@ -1,0 +1,48 @@
+package com.princi;
+
+//Import necessary classes for servlet functionality
+import java.io.IOException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+
+@WebServlet("/delete")
+public class delete extends HttpServlet{
+	
+	PriDAO dao = new PriDAO();
+
+	// Handle POST requests
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String act = request.getServletPath();
+		switch (act) {
+		case "/delete":
+			System.out.println("login" + act);
+			deleteuser(request, response);
+		}
+
+	}
+
+	private void deleteuser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		String eid = request.getParameter("eventid");
+		eid = eid != null ? eid.trim() : "";
+		System.out.println("Attempting to delete user with ID1: " + eid);
+		dao.deleteUser(eid);
+		System.out.println("Attempting to delete user with ID: " + eid);
+
+		String alertMessage = "User deleted";
+
+		response.getWriter().println("<script type=\"text/javascript\">");
+		response.getWriter().println("alert('" + alertMessage + "');");
+		response.getWriter().println("window.location.href = 'addevent.jsp';");
+		response.getWriter().println("</script>");
+		
+	}
+
+}

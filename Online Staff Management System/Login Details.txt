@@ -1,0 +1,21 @@
+----User Log In Information---
+
+--Admin--
+
+username | password
+A001     | a123
+
+--Principle--
+
+username | password
+P001     | a123
+
+--Payroll Officer
+
+username | password
+PF001    | a123
+
+--Teacher--
+
+username | password
+ T001     | a123

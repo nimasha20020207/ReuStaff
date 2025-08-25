@@ -1,0 +1,63 @@
+title {
+    display: flex;
+    margin: 60px 0 30px 150px;
+    text-align: center;
+}
+
+ .title .text {
+    font-size: 45px;
+    font-weight: 500;
+    color: #002960;
+    margin-left: 25%;
+    text-align: center;
+}
+hr.mt-6{
+    color: #d60303;
+    
+}
+
+footer {
+    background-color: #333; /* Dark background color */
+    color: white; /* White text */
+    text-align: center; /* Center the text */
+    padding: 20px 0; /* Add some padding */
+    position: relative;
+    bottom: 0;
+    width: 100%; /* Make it span across the entire width */
+}
+
+/* Optional: To fix the footer at the bottom if the content is short */
+html, body {
+    height: 100%; /* Set full height for the page */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto; /* Push the footer to the bottom */
+}
+.custom-btn {
+    background-color: #839492!important; /* Change to your desired color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Button padding */
+    border-radius: 5px; /* Rounded corners */
+}
+.custom-btn:hover{
+    background-color: #ddee419c !important;
+}
+
+/*end common page*/
+.announcement-box {
+    border: 1px solid #468edb; /* Border color */
+    box-shadow: 0 2px 5px rgba(204, 93, 93, 0.1); /* Light shadow for depth */
+    margin-top: 20px; /* Space above the box */
+}
+
+.announcement-box .table {
+    background-color:solid #468edb;
+    border: 0px solid #02070c;
+}

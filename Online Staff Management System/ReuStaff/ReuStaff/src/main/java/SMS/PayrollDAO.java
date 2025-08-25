@@ -1,0 +1,162 @@
+package SMS;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
+public class PayrollDAO {
+
+	// Method to establish database connection
+	public Connection dbConnection() {
+		Connection con=null;
+		
+		// Database connection details
+		String url = "jdbc:mysql://localhost:3306/reutest";
+	    String un = "root";
+	    String pw = "Janith@12345";
+		
+		try {
+			 // Load the MySQL JDBC driver
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			//connect to database
+			con = DriverManager.getConnection(url,un,pw);
+			
+			System.out.println("Database connection succes");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return con;
+	}
+	
+	// Method to add a new payslip to the database
+	public void addNewPayslip(paySlip ps) {
+		try {
+			Connection con=dbConnection();
+			String sql="INSERT INTO payslip(payslipID,staffMemberID,Month,Bonus,Basic,Total,PayRollOfficerID) VALUES(?,?,?,?,?,?,?)";
+			
+			PreparedStatement pst=con.prepareStatement(sql);
+			
+			// Set values for the prepared statement using the paySlip object
+			pst.setInt(1,ps.getPayslipID());;
+			pst.setString(2, ps.getMemberID());
+			pst.setString(3,ps.getMonth());
+			pst.setFloat(4,ps.getBonus());
+			pst.setFloat(5,ps.getBasic());
+			pst.setFloat(6,ps.getTotal());
+			pst.setString(7,ps.getOfficer());
+			
+			//execute 
+			pst.executeUpdate();
+			System.out.println(pst);
+		}catch(Exception e) {
+			
+		}
+		
+	}
+	// Method to retrieve all issued payslips from the database
+	public List<paySlip> getIssuedPayslips() {
+		List<paySlip> pList=new ArrayList<>();
+		Connection con=dbConnection();
+		 String query="select * from payslip";
+		 
+		 try {
+			 PreparedStatement ps=con.prepareStatement(query);
+			 ResultSet rs=ps.executeQuery();
+			 
+			 while(rs.next()) {
+				 int pID=rs.getInt("payslipID");
+				 String SMID=rs.getString("staffMemberID");
+				 String month=rs.getString("Month");
+				 float bonus=rs.getFloat("Bonus");
+				 float basic=rs.getFloat("Basic");
+				 float total=rs.getFloat("Total");
+				 String issuedBy=rs.getString("PayRollOfficerID");
+				 
+				 pList.add(new paySlip(pID,SMID,month,bonus,basic,total,issuedBy));
+			 }
+			 
+		 }catch(Exception e) {
+			 
+		 }
+		 return pList;
+	}
+	
+	// Method to retrieve a specific payslip by ID for updating
+	public paySlip selectUpdateSlip(int id) {
+		Connection con=dbConnection();
+		paySlip slip=null;
+	
+		try {
+			String query="select * from payslip where payslipID=?";
+			PreparedStatement stmt=con.prepareStatement(query);
+			stmt.setInt(1,id);
+			
+			ResultSet rs=stmt.executeQuery();
+			System.out.println(rs);
+			
+			while(rs.next()) {
+				String staffmemID=rs.getString(2);
+				String month=rs.getString(3);
+				float Bonus=rs.getFloat(4);
+				float Basic=rs.getFloat(5);
+				float Total=rs.getFloat(6);
+				String payOfficerID=rs.getString(7);
+				
+				slip=new paySlip(id,staffmemID,month,Bonus,Basic,Total,payOfficerID);
+				
+			}
+		}catch(Exception e){
+			
+		}
+		return slip;
+	}
+	 // Method to update an existing payslip in the database
+	public boolean updatePaySlip(paySlip updatedSlip) {
+		Connection con=dbConnection();
+		boolean update=false;
+		try {
+			String query="update payslip set staffMemberID=?,Month=?,Bonus=?,Basic=?,Total=?,PayRollOfficerID=? where payslipID=?";
+			
+			PreparedStatement stmt=con.prepareStatement(query);
+			
+			stmt.setString(1,updatedSlip.getMemberID());
+			stmt.setString(2, updatedSlip.getMonth());
+			stmt.setFloat(3,updatedSlip.getBonus());
+			stmt.setFloat(4, updatedSlip.getBasic());
+			stmt.setFloat(5,updatedSlip.getTotal());
+			
+			stmt.setString(6,updatedSlip.getOfficer());
+			stmt.setInt(7,updatedSlip.getPayslipID());
+			
+			System.out.println(stmt);
+			update=stmt.executeUpdate()>0;
+		}catch(Exception e) {
+			
+		}
+		return update;
+	}
+	
+
+    // Method to delete a payslip record from the database by ID
+	public void delete(int id) {
+		Connection con=dbConnection();
+		
+		try {
+			String query="delete from payslip where payslipID=?";
+			PreparedStatement stmt=con.prepareStatement(query);
+			stmt.setInt(1, id);
+			stmt.executeUpdate();
+			System.out.println("delete success");
+		}catch(Exception e) {
+			
+		}
+	
+	}
+	
+
+}

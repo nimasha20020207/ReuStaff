@@ -1,0 +1,97 @@
+package SMS;
+
+public class paySlip {
+	//private attributes
+	int PayslipID;
+	String MemberID;
+	String Month;
+	float Bonus;
+	float Basic;
+	float Total;
+	String officer;
+	
+	@Override
+	public String toString() {
+		return "payslip[payslipid=" +PayslipID+",staffMemberId=" + MemberID + ", Month=" + Month + ", Bonus=" + Bonus + ", Basic=" + Basic + ", Total=" + Total
+				+ ", payrollOfficer=" + officer + "]";
+	}
+	
+	//overloaded constructor
+	public paySlip(int payslipID, String memberID, String month, float bonus, float basic, float total,
+			String officer) {
+		super();
+		PayslipID = payslipID;
+		MemberID = memberID;
+		Month = month;
+		Bonus = bonus;
+		Basic = basic;
+		Total = total;
+		this.officer = officer;
+	}
+
+	//default constructor
+	public paySlip() {
+		super();
+		
+	}
+
+	//getters and setters
+	public int getPayslipID() {
+		return PayslipID;
+	}
+
+	public void setPayslipID(int payslipID) {
+		PayslipID = payslipID;
+	}
+
+	public String getMemberID() {
+		return MemberID;
+	}
+
+	public void setMemberID(String memberID) {
+		MemberID = memberID;
+	}
+
+	public String getMonth() {
+		return Month;
+	}
+
+	public void setMonth(String month) {
+		Month = month;
+	}
+
+	public float getBonus() {
+		return Bonus;
+	}
+
+	public void setBonus(float bonus) {
+		Bonus = bonus;
+	}
+
+	public float getBasic() {
+		return Basic;
+	}
+
+	public void setBasic(float basic) {
+		Basic = basic;
+	}
+
+	public float getTotal() {
+		return Total;
+	}
+
+	public void setTotal(float total) {
+		Total = total;
+	}
+
+	public String getOfficer() {
+		return officer;
+	}
+
+	public void setOfficer(String officer) {
+		this.officer = officer;
+	}
+	
+}
+
+
